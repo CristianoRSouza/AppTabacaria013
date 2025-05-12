@@ -5,4 +5,5 @@ export interface LoginProp {
 export interface UserAuth {
     email:string,
     password:string,
+    nickname:string
 }

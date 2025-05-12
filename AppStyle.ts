@@ -5,4 +5,8 @@ export const Appstyle = StyleSheet.create({
     flex: 1,
     backgroundColor: '#0c0a0a'
   },
+  txtApelido:{
+    color:'white',
+    textAlign:'center'
+  }
 });

@@ -1,20 +1,12 @@
 import React, { useState } from 'react';
-import {
-    View,
-    Text,
-    TextInput,
-    TouchableOpacity,
-    SafeAreaView,
-    Alert,
-} from 'react-native';
-import { UserAuth, LoginProp } from '../../utils/interfaces/user.interface';
-import { styles } from './style'; // Importa o styles de outro arquivo
+import {View, Text, TextInput,TouchableOpacity, SafeAreaView, Alert,} from 'react-native';
+import { UserAuth, LoginProp } from '../../utils/interfaces/User.interfaces';
+import { styles } from './style';
+import { contextApp } from '../../utils/context/UseContext';
 
 const LoginScreen: React.FC<LoginProp> = ({ onLoginSuccess }) => {
-    const [credentials, setCredentials] = useState<UserAuth>({
-        email: '',
-        password: ''
-    });
+
+    const [credentials, setCredentials] = useState<UserAuth>({ email:'', password:'', nickname:''});
     const [isLoading, setIsLoading] = useState(false);
 
     const handleInputChange = (field: keyof UserAuth, value: string) => {
@@ -34,7 +26,6 @@ const LoginScreen: React.FC<LoginProp> = ({ onLoginSuccess }) => {
             Alert.alert('Erro', 'Email inválido');
             return false;
         }
-
         return true;
     };
 
@@ -55,7 +46,6 @@ const LoginScreen: React.FC<LoginProp> = ({ onLoginSuccess }) => {
             if (!response.ok) {
                 throw new Error(`Erro HTTP! status: ${response.status}`);
             }
-
             onLoginSuccess();
         } catch (error) {
             console.error('Login error:', error);
